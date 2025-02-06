@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semangat Skripsi, Cantikk! 💖</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fce4ec;
+            font-family: 'Comic Neue', cursive;
+            flex-direction: column;
+        }
+        .container {
+            text-align: center;
+        }
+        .letters-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .letter-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .letter {
+            width: 280px;
+            height: auto;
+            background: #fff;
+            border: 2px solid #ff80ab;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            display: none;
+            margin-top: 10px;
+        }
+        .closed-letter {
+            width: 280px;
+            height: 180px;
+            background: #ff80ab;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .closed-letter:hover {
+            transform: scale(1.05);
+        }
+        .ornament {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .ornament img {
+            width: 100px;
+            height: auto;
+        }
+        .end-button {
+            display: none;
+            margin-top: 20px;
+        }
+        button {
+            background: #ff80ab;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Comic Neue', cursive;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #e57373;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="letters-container">
+            <div class="letter-container">
+                <div class="closed-letter" onclick="openLetter(1)">📩 Semangat! 🌸✨💖</div>
+                <div class="letter" id="letter1">
+                    <p><strong>Hai Cantikk! 💖</strong></p>
+                    <p>Skripsi itu berat, tapi kamu lebih kuat! Satu langkah lagi menuju impianmu. Kamu bisa, semangat! 🚀✨</p>
+                </div>
+            </div>
+            <div class="letter-container">
+                <div class="closed-letter" onclick="openLetter(2)">📩 Skripsinya! 🌼💖🎀</div>
+                <div class="letter" id="letter2">
+                    <p><strong>Hei Pejuang Skripsi! 💪</strong></p>
+                    <p>Jangan menyerah ya! Setiap bab yang kamu tulis membawa kamu lebih dekat ke wisuda. Keep going! 🌟</p>
+                </div>
+            </div>
+            <div class="letter-container">
+                <div class="closed-letter" onclick="openLetter(3)">📩 Nining! 💐🌷💖</div>
+                <div class="letter" id="letter3">
+                    <p><strong>Si Cantikk yang Kuat! 💕</strong></p>
+                    <p>Skripsi ini hanya tantangan kecil untuk seorang hebat seperti kamu! Teruslah berjuang! 💪🌈</p>
+                </div>
+            </div>
+        </div>
+        
+        <button class="end-button" onclick="closeAll()">Tutup Semua Surat</button>
+        
+        <div class="ornament" id="ornament">
+            <img src="https://i.pinimg.com/originals/b0/9a/06/b09a0682c2cd4d291bf195d52870affd.gif" alt="Cute Ornament">
+        </div>
+    </div>
+
+    <script>
+        let openedLetters = 0;
+        function openLetter(num) {
+            let letter = document.getElementById('letter' + num);
+            if (letter.style.display === 'none' || letter.style.display === '') {
+                letter.style.display = 'block';
+                setTimeout(() => {
+                    letter.style.opacity = '1';
+                    letter.style.transform = 'scale(1)';
+                }, 50);
+                openedLetters++;
+            }
+            if (openedLetters === 3) {
+                document.querySelector('.end-button').style.display = 'block';
+            }
+        }
+        
+        function closeAll() {
+            document.querySelectorAll('.letter').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'scale(0.8)';
+                setTimeout(() => {
+                    el.style.display = 'none';
+                }, 500);
+            });
+            document.querySelector('.end-button').style.display = 'none';
+            setTimeout(() => {
+                let ornament = document.getElementById('ornament');
+                ornament.style.display = 'block';
+                setTimeout(() => {
+                    ornament.style.opacity = '1';
+                    ornament.style.transform = 'translateY(0)';
+                }, 50);
+            }, 500);
+        }
+    </script>
+</body>
+</html>
